@@ -10,6 +10,8 @@
 
 #pragma comment(lib, "Ws2_32.lib")
 
+//C++20 required
+
 using namespace reframework;
 
 typedef void* (*REFGenericFunction)(...);
@@ -35,13 +37,7 @@ void RunRequest(std::string str){
 
     sol::state_view lua{g_lua};
     lua["CCRequestString"] = str;
-    if(!g_loaded_snippets.contains("CCRequestEffect")){
-                g_loaded_snippets["CCRequestEffect"] = lua.load(R"(
-            return CCRunRequest()
-    )");
-    }
-
-    std::string response = g_loaded_snippets["CCRequestEffect"]();
+    std::string response = lua["CCRunRequest"]();
     API::get()->log_info("%s",response.c_str());
     send(s,response.c_str(),response.length(),NULL);
     send(s,nullTerm,sizeof(nullTerm),NULL);

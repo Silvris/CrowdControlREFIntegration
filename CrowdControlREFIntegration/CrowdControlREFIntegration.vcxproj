@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -76,6 +76,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;include/lua/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +92,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;include/lua/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,7 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>include;include/lua/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +124,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;include/lua/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,10 +135,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="reframework\API.hpp" />
+    <ClCompile Include="include\lua\src\lapi.c" />
+    <ClCompile Include="include\lua\src\lauxlib.c" />
+    <ClCompile Include="include\lua\src\lbaselib.c" />
+    <ClCompile Include="include\lua\src\lcode.c" />
+    <ClCompile Include="include\lua\src\lcorolib.c" />
+    <ClCompile Include="include\lua\src\lctype.c" />
+    <ClCompile Include="include\lua\src\ldblib.c" />
+    <ClCompile Include="include\lua\src\ldebug.c" />
+    <ClCompile Include="include\lua\src\ldo.c" />
+    <ClCompile Include="include\lua\src\ldump.c" />
+    <ClCompile Include="include\lua\src\lfunc.c" />
+    <ClCompile Include="include\lua\src\lgc.c" />
+    <ClCompile Include="include\lua\src\linit.c" />
+    <ClCompile Include="include\lua\src\liolib.c" />
+    <ClCompile Include="include\lua\src\llex.c" />
+    <ClCompile Include="include\lua\src\lmathlib.c" />
+    <ClCompile Include="include\lua\src\lmem.c" />
+    <ClCompile Include="include\lua\src\loadlib.c" />
+    <ClCompile Include="include\lua\src\lobject.c" />
+    <ClCompile Include="include\lua\src\lopcodes.c" />
+    <ClCompile Include="include\lua\src\loslib.c" />
+    <ClCompile Include="include\lua\src\lparser.c" />
+    <ClCompile Include="include\lua\src\lstate.c" />
+    <ClCompile Include="include\lua\src\lstring.c" />
+    <ClCompile Include="include\lua\src\lstrlib.c" />
+    <ClCompile Include="include\lua\src\ltable.c" />
+    <ClCompile Include="include\lua\src\ltablib.c" />
+    <ClCompile Include="include\lua\src\ltm.c" />
+    <ClCompile Include="include\lua\src\lundump.c" />
+    <ClCompile Include="include\lua\src\lutf8lib.c" />
+    <ClCompile Include="include\lua\src\lvm.c" />
+    <ClCompile Include="include\lua\src\lzio.c" />
+    <ClCompile Include="Plugin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
